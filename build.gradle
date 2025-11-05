@@ -7,6 +7,7 @@ plugins {
 	id 'com.gradleup.shadow' version "9.2.2" apply false
 	id 'me.champeau.jmh' version '0.7.2' apply false
 	id 'io.spring.nullability' version '0.0.7' apply false
+    id "org.sonarqube" version "7.0.1.6134"
 }
 
 ext {
@@ -84,4 +85,11 @@ configure([rootProject] + javaProjects) { project ->
 
 configure(moduleProjects) { project ->
 	apply from: "${rootDir}/gradle/spring-module.gradle"
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "zhongyixiao_spring-framework"
+        property "sonar.organization", "zhongyixiao"
+    }
 }
